@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"bytes"
+	"fmt"
 	"go.uber.org/zap"
 	"io/ioutil"
 	"net/http"
@@ -19,7 +20,7 @@ func WithErrorHandler(lgr *zap.Logger, next func(resp http.ResponseWriter, req *
 
 		lgr.Error(err.Error())
 
-		utils.WriteFailureResponse(w, resperr.NewResponseError(http.StatusInternalServerError, "could not process the request"))
+		utils.WriteFailureResponse(w, resperr.NewResponseError(http.StatusInternalServerError, fmt.Sprintf("could not process the request: %q", err.Error())))
 	}
 }
 

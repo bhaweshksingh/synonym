@@ -22,8 +22,8 @@ http-serve: build
 	$(APP_EXECUTABLE) -configFile=$(configFile) $(HTTP_SERVE_COMMAND)
 
 app:
-	docker-compose -f build/docker-compose.app-stock.yml -f build/docker-compose.network.yml up -d --build
-	docker logs synonym-service-go
+	docker-compose -f build/docker-compose.app-synonym.yml -f build/docker-compose.network.yml up -d --build
+	docker logs -f synonym-service-go
 
 http-local-serve: build
 	$(APP_EXECUTABLE) -configFile=$(CONFIG_FILE) $(HTTP_SERVE_COMMAND)

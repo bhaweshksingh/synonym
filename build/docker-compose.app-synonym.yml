@@ -6,7 +6,6 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile
-    environment:
     env_file:
       - ../.env
     ports:

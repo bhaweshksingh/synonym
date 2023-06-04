@@ -22,7 +22,7 @@ func NewRouter(lgr *zap.Logger, thesaurusSvc thesaurus.Service) http.Handler {
 	th := handler.NewThesaurusHandler(lgr, thesaurusSvc)
 
 	router.HandleFunc(addSynonymsPath, withMiddlewares(lgr, middleware.WithErrorHandler(lgr, th.AddSynonyms))).Methods(http.MethodPost)
-	router.HandleFunc(searchSynonymsPath, withMiddlewares(lgr, middleware.WithErrorHandler(lgr, th.SearchSynonyms))).Methods(http.MethodPost)
+	router.HandleFunc(searchSynonymsPath, withMiddlewares(lgr, middleware.WithErrorHandler(lgr, th.SearchSynonyms))).Methods(http.MethodGet)
 
 	return router
 }

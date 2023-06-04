@@ -1,3 +1,3 @@
 package contract
 
-const WordAdditionSuccess = "Word Added successfully"
+const WordsAdditionSuccess = "Words Added successfully"
