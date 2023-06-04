@@ -44,3 +44,25 @@ curl --location 'localhost:8888/synonyms' \
 ```shell
 curl --location 'localhost:8888/synonyms/search?word=abc'
 ```
+
+## Test using perf tool Vegeta
+
+### Install Vegeta
+
+```shell
+brew install vegeta
+```
+
+### Search REq
+
+```
+echo "GET http://localhost:8888/synonyms/search?word=word2" | vegeta attack -rate 1000 -duration 1m | vegeta report
+```
+
+
+### Add Req
+
+```shell
+echo "POST http://localhost:8888/synonyms" | vegeta attack -body synonyms.json -rate 1000 -duration 1m | vegeta report
+```
+
